@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F0C3CC7-4ADE-4038-84E4-4209907E65ED}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DXRFID</RootNamespace>
+    <AssemblyName>DXRFID</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DBHelper">
+      <HintPath>..\..\..\DBHelper\DBHelper\bin\Debug\DBHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Bootstrap.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="assets\img\logo.jpg" />
+    <Content Include="assets\img\user01.jpg" />
+    <Content Include="assets\js\jquery-1.7.2.min.js" />
+    <Content Include="assets\js\jquery.uploadify.js" />
+    <Content Include="assets\js\jquery.uploadify.min.js" />
+    <Content Include="assets\js\WdatePicker.js" />
+    <Content Include="assets\My97DatePicker\calendar.js" />
+    <Content Include="assets\My97DatePicker\lang\en.js" />
+    <Content Include="assets\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="assets\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="assets\My97DatePicker\skin\blueFresh\datepicker.css" />
+    <Content Include="assets\My97DatePicker\skin\blueFresh\img.gif" />
+    <Content Include="assets\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="assets\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="assets\My97DatePicker\skin\default\img.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\datepicker.css" />
+    <Content Include="assets\My97DatePicker\skin\ext\dateselect.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\glass-bg.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\hd-sprite.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\img.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\left-btn.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\left-btn2.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\right-btn.gif" />
+    <Content Include="assets\My97DatePicker\skin\ext\right-btn2.gif" />
+    <Content Include="assets\My97DatePicker\skin\twoer\datepicker-dev.css" />
+    <Content Include="assets\My97DatePicker\skin\twoer\datepicker.css" />
+    <Content Include="assets\My97DatePicker\skin\twoer\img.gif" />
+    <Content Include="assets\My97DatePicker\skin\twoer\img.png" />
+    <Content Include="assets\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="assets\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="assets\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="assets\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="assets\My97DatePicker\WdatePicker.js" />
+    <Content Include="assets\uploadify\uploadify-cancel.png" />
+    <Content Include="assets\uploadify\uploadify.css" />
+    <Content Include="assets\uploadify\uploadify.swf" />
+    <Content Include="Borrow_Find.aspx" />
+    <Content Include="Borrow_Handle.aspx" />
+    <Content Include="Class\ConsoleBorrow_ShowPicForCustomer.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="assets\css\admin.css" />
+    <Content Include="assets\css\amazeui.min.css" />
+    <Content Include="assets\css\app.css" />
+    <Content Include="assets\img\lbbg.png" />
+    <Content Include="assets\i\app-icon72x72%402x.png" />
+    <Content Include="assets\i\favicon.png" />
+    <Content Include="assets\i\startup-640x1096.png" />
+    <Content Include="assets\js\amazeui.min.js" />
+    <Content Include="assets\js\app.js" />
+    <Content Include="assets\js\echarts.min.js" />
+    <Content Include="assets\js\iscroll.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="ForgetPwd.aspx" />
+    <Content Include="Global.asax" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewUserAdd.aspx" />
+    <Content Include="No_Pandian_List.aspx" />
+    <Content Include="Pandian_Admin.aspx" />
+    <Content Include="Pandian_History.aspx" />
+    <Content Include="Pandian_List.aspx" />
+    <Content Include="Return_Find.aspx" />
+    <Content Include="Return_Handle.aspx" />
+    <Content Include="Ruku_Find.aspx" />
+    <Content Include="Ruku_Handle.aspx" />
+    <Content Include="UpdateEquipmentInformation_History.aspx" />
+    <Content Include="Update_EquipmentInformation.aspx" />
+    <Content Include="UserManagement.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="Header.Master" />
+    <Content Include="assets\uploadify\uploadify.php" />
+    <None Include="Properties\PublishProfiles\RFID.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow_Find.aspx.cs">
+      <DependentUpon>Borrow_Find.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Borrow_Find.aspx.designer.cs">
+      <DependentUpon>Borrow_Find.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow_Handle.aspx.cs">
+      <DependentUpon>Borrow_Handle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Borrow_Handle.aspx.designer.cs">
+      <DependentUpon>Borrow_Handle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class\CheckSessionLogin.cs" />
+    <Compile Include="Class\ConsoleBorrow_ShowPicForCustomer.aspx.cs">
+      <DependentUpon>ConsoleBorrow_ShowPicForCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class\ConsoleBorrow_ShowPicForCustomer.aspx.designer.cs">
+      <DependentUpon>ConsoleBorrow_ShowPicForCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class\DataBound.cs" />
+    <Compile Include="Class\DB_Handle.cs" />
+    <Compile Include="Class\MD5_Encoding.cs" />
+    <Compile Include="Class\SendMail.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPwd.aspx.cs">
+      <DependentUpon>ForgetPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgetPwd.aspx.designer.cs">
+      <DependentUpon>ForgetPwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Header.Master.cs">
+      <DependentUpon>Header.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Header.Master.designer.cs">
+      <DependentUpon>Header.Master</DependentUpon>
+    </Compile>
+    <Compile Include="NewUserAdd.aspx.cs">
+      <DependentUpon>NewUserAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewUserAdd.aspx.designer.cs">
+      <DependentUpon>NewUserAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="No_Pandian_List.aspx.cs">
+      <DependentUpon>No_Pandian_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="No_Pandian_List.aspx.designer.cs">
+      <DependentUpon>No_Pandian_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pandian_Admin.aspx.cs">
+      <DependentUpon>Pandian_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pandian_Admin.aspx.designer.cs">
+      <DependentUpon>Pandian_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pandian_History.aspx.cs">
+      <DependentUpon>Pandian_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pandian_History.aspx.designer.cs">
+      <DependentUpon>Pandian_History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pandian_List.aspx.cs">
+      <DependentUpon>Pandian_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pandian_List.aspx.designer.cs">
+      <DependentUpon>Pandian_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Return_Find.aspx.cs">
+      <DependentUpon>Return_Find.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Return_Find.aspx.designer.cs">
+      <DependentUpon>Return_Find.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Return_Handle.aspx.cs">
+      <DependentUpon>Return_Handle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Return_Handle.aspx.designer.cs">
+      <DependentUpon>Return_Handle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ruku_Find.aspx.cs">
+      <DependentUpon>Ruku_Find.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ruku_Find.aspx.designer.cs">
+      <DependentUpon>Ruku_Find.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ruku_Handle.aspx.cs">
+      <DependentUpon>Ruku_Handle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ruku_Handle.aspx.designer.cs">
+      <DependentUpon>Ruku_Handle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateEquipmentInformation_History.aspx.cs">
+      <DependentUpon>UpdateEquipmentInformation_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateEquipmentInformation_History.aspx.designer.cs">
+      <DependentUpon>UpdateEquipmentInformation_History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Update_EquipmentInformation.aspx.cs">
+      <DependentUpon>Update_EquipmentInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Update_EquipmentInformation.aspx.designer.cs">
+      <DependentUpon>Update_EquipmentInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement.aspx.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserManagement.aspx.designer.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="UploadPicture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56488</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56488/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

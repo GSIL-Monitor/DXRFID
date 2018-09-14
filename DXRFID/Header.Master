@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Header.master.cs" Inherits="DXRFID.Header" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OFT RFID 夹具管理系统</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script type="text/javascript" src="assets/js/echarts.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body runat="server">
+    <form runat="server">
+        <div class="am-topbar am-topbar-inverse admin-header">
+            <div class="am-topbar-brand">
+                <a href="Default.aspx" class="tpl-logo">
+                    <img src="assets/img/logo.jpg" alt="">
+                </a>
+            </div>
+            <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+            </div>
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+            <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                    <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                        <asp:Label ID="welcome" runat="server" Text=""></asp:Label>
+                    </li>
+                    <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                        <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                            <span class="tpl-header-list-user-ico">
+                                <img src="assets/img/user01.jpg"></span>
+                        </a>
+                        <ul class="am-dropdown-content">
+                            <li>
+                                <asp:Label ID="LoginName" CssClass="am-icon-bell-o" runat="server" Text=""></asp:Label></li>
+                            <li>
+                                <span class="am-icon-cog"></span>
+                                <asp:Button ID="Changepwd" runat="server" Text="修改密码" CssClass="am-icon-bell-o" OnClick="Changepwd_Click" BorderStyle="None" BackColor="White" />
+                                <span></span>
+                            </li>
+                            <li><span class="am-icon-power-off"></span>
+                                <asp:Button ID="ClearLogin" runat="server" Text="退出" CssClass="am-icon-bell-o" OnClick="ClearLogin_Click" BorderStyle="None" BackColor="White" />
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span><span class="admin-fullText">开启全屏</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="tpl-page-container tpl-page-header-fixed">
+            <div class="tpl-left-nav tpl-left-nav-hover">
+                <div class="tpl-left-nav-title">
+                    RFID系统列表 
+                </div>
+                <div class="tpl-left-nav-list">
+                    <ul class="tpl-left-nav-menu">
+                        <%--<li class="tpl-left-nav-item"><a href="Default.aspx" class="nav-link"><i class="am-icon-home"></i><span>首页</span> </a></li>--%>
+
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-bar-chart"></i><span>设备信息管理</span> </div>
+
+                            <ul class="tpl-left-nav-sub-menu" style="display: block">
+                                <li>
+                                    <a href="Ruku_Find.aspx"><i class="am-icon-angle-right"></i><span>设备信息查询</span> </a>
+                                    <a href="Update_EquipmentInformation.aspx"><i class="am-icon-angle-right"></i><span>设备信息维护</span></a>
+                                    <a href="UpdateEquipmentInformation_History.aspx"><i class="am-icon-angle-right"></i><span>设备维护历史查询</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-bar-chart"></i><span>出入库管理</span> </div>
+
+                            <ul class="tpl-left-nav-sub-menu" style="display: block">
+                                <li>
+                                    <a href="Ruku_Handle.aspx"><i class="am-icon-angle-right"></i><span>入库操作</span></a>
+                                    <a href="Borrow_Handle.aspx"><i class="am-icon-angle-right"></i><span>借出操作</span></a>
+                                    <a href="Return_Handle.aspx"><i class="am-icon-angle-right"></i><span>归还操作</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-wpforms"></i><span>出入库历史查询</span> </div>
+                            <ul class="tpl-left-nav-sub-menu">
+                                <li>
+                                    <a href="Borrow_Find.aspx"><i class="am-icon-angle-right"></i><span>借出历史查询</span> </a>
+                                    <a href="Return_Find.aspx"><i class="am-icon-angle-right"></i><span>归还历史查询</span> </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-wpforms"></i><span>盘点管理</span> </div>
+                            <ul class="tpl-left-nav-sub-menu" style="display: block">
+                                <li>
+                                    <a href="Pandian_List.aspx"><i class="am-icon-angle-right"></i><span>盘点设备信息汇总</span> </a>
+                                    <a href="No_Pandian_List.aspx"><i class="am-icon-angle-right"></i><span>盘点状态汇总</span> </a>
+                                    <a href="Pandian_History.aspx"><i class="am-icon-angle-right"></i><span>设备盘点历史信息查询</span> </a>
+                                    <a href="Pandian_Admin.aspx"><i class="am-icon-angle-right"></i><span>盘点信息维护</span> </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-key"></i><span>定位看板</span> </div>
+                        </li>
+                        <li class="tpl-left-nav-item">
+                            <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-key"></i><span>用户管理</span> </div>
+                            <ul class="tpl-left-nav-sub-menu">
+                                <li>
+                                    <a href="NewUserAdd.aspx"><i class="am-icon-angle-right"></i><span>新用户添加</span> </a>
+                                    <a href="UserManagement.aspx"><i class="am-icon-angle-right"></i><span>用户信息管理</span> </a>
+                                    <a href="ForgetPwd.aspx"><i class="am-icon-angle-right"></i><span>密码重置</span> </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tpl-content-wrapper">
+                <asp:ContentPlaceHolder ID="Main" runat="server">
+                    <div class="tpl-portlet-components">
+                    </div>
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/amazeui.min.js"></script>
+        <script type="text/javascript" src="assets/js/iscroll.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+    </form>
+</body>
+
+</html>
