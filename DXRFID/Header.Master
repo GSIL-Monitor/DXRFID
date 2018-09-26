@@ -109,7 +109,6 @@
                             <div class="nav-link tpl-left-nav-link-list" style="cursor: pointer"><i class="am-icon-wpforms"></i><span>盘点管理</span> </div>
                             <ul class="tpl-left-nav-sub-menu" style="display: block">
                                 <li>
-                                    <a href="Pandian_List.aspx"><i class="am-icon-angle-right"></i><span>盘点设备信息汇总</span> </a>
                                     <a href="No_Pandian_List.aspx"><i class="am-icon-angle-right"></i><span>盘点状态汇总</span> </a>
                                     <a href="Pandian_History.aspx"><i class="am-icon-angle-right"></i><span>设备盘点历史信息查询</span> </a>
                                     <a href="Pandian_Admin.aspx"><i class="am-icon-angle-right"></i><span>盘点信息维护</span> </a>

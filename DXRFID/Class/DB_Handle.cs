@@ -37,7 +37,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_User_ConfidentialInformation_ByOpid(string opid)
         {
-            return "SELECT [name],[pwd],e_mail,premission  FROM [RFID].[dbo].[userinfo] where opid='" + opid + "'";
+            return "SELECT [name],[pwd],e_mail,premission  FROM [dbo].[userinfo] where opid='" + opid + "'";
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_UserAllInformation()
         {
-            return "SELECT [opid] 工号,[name] 姓名,[function] 部门,[e_mail] 邮箱,(case [premission] when 'normal' then '普通用户'  when 'root' then '管理员' else '超级管理员' end) as 权限 FROM [RFID].[dbo].[userinfo] where opid!='180731559' order by opid";
+            return "SELECT [opid] 工号,[name] 姓名,[function] 部门,[e_mail] 邮箱,(case [premission] when 'normal' then '普通用户'  when 'root' then '管理员' else '超级管理员' end) as 权限 FROM [dbo].[userinfo] where opid!='180731559' order by opid";
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_UserInformation(string key, string value)
         {
-            return @"SELECT [opid] 工号,[name] 姓名,[function] 部门,[e_mail] 邮箱,(case [premission] when 'normal' then '普通用户'  when 'root' then '管理员' else '超级管理员' end) as 权限 FROM [RFID].[dbo].[userinfo]
+            return @"SELECT [opid] 工号,[name] 姓名,[function] 部门,[e_mail] 邮箱,(case [premission] when 'normal' then '普通用户'  when 'root' then '管理员' else '超级管理员' end) as 权限 FROM [dbo].[userinfo]
                     where " + key + " like '%" + value + "%' order by opid";
         }
 
@@ -188,12 +188,12 @@ namespace DXRFID.Class
         /// </summary>
         public string Select_InStoreMsg_ByCustromsKeyValue(string key,string value)
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [RFID].[dbo].[EquipmentInformation] where "+ key + " LIKE '%"+ value + "%' order by RFID";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] where "+ key + " LIKE '%"+ value + "%' order by RFID";
         }
 
         public string Select_AllInStoreMsg()
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [RFID].[dbo].[EquipmentInformation] order by RFID";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] order by RFID";
         }
 
         /// <summary>
@@ -205,8 +205,8 @@ namespace DXRFID.Class
         public string Select_BorrowMsg_ByCustromsKeyValue(string key, string value)
         {
             return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Borrow_Person] 借出人,
-                    b.[Borrow_Datetime] 借出时间,b.[Borrow_Cycle] 借出周期,b.[Borrow_Reason] 借出原因,b.[Operator] 借出操作人 FROM [RFID].[dbo].[EquipmentInformation]
-                    a inner join[RFID].[dbo].[BorrowInformation] b on a.[RFID] = b.[RFID] and " + key + " LIKE '%" + value + "%' order by RFID";
+                    b.[Borrow_Datetime] 借出时间,b.[Borrow_Cycle] 借出周期,b.[Borrow_Reason] 借出原因,b.[Operator] 借出操作人 FROM [dbo].[EquipmentInformation]
+                    a inner join [dbo].[BorrowInformation] b on a.[RFID] = b.[RFID] and " + key + " LIKE '%" + value + "%' order by RFID";
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace DXRFID.Class
         {
             return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Return_Person] 归还人,
                         b.[Return_Datetime] 归还时间,b.[Operator] 归还操作人 FROM
-                        [RFID].[dbo].[EquipmentInformation] a inner join [RFID].[dbo].[ReturnInformation] b on a.[RFID] = b.[RFID]  and " + key + " LIKE '%" + value + "%' order by RFID";
+                         [dbo].[EquipmentInformation] a inner join [dbo].[ReturnInformation] b on a.[RFID] = b.[RFID]  and " + key + " LIKE '%" + value + "%' order by RFID";
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace DXRFID.Class
         /// </summary>
         public string Check_TakeStockTime()
         {
-            return @"SELECT TOP 1 [TakeStockStartTime] FROM [dbo].[TakeStock_Admin] order by [TakeStockStartTime] desc";
+            return @"SELECT TOP 1 [TakeStockStartTime] FROM [dbo].[TakeStock_Admin] order by [TakeStockStartTime] asc";
         }
 
         /// <summary>
@@ -244,8 +244,8 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_AllTakeStockStatus()
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[LastTakeStock_DateTime] 盘点时间,[LastTakeStock_Person] 盘点人,
-                        [LastTakeStock_StoragePlace] 设备当前存放位置,(case [LastTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态 FROM [RFID].[dbo].[EquipmentInformation]";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[CurrentTakeStock_DateTime] 盘点时间,[CurrentTakeStock_StoragePlace] 盘点存放位置,(case [CurrentTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态 FROM [dbo].[EquipmentInformation] a inner join [dbo].[TakeStock_Admin] b
+                    on a.[StoragePlace] = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") order by RFID";
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_TakeStockCount()
         {
-            return "SELECT (case [LastTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态,count(*) FROM [RFID].[dbo].[EquipmentInformation] group by [LastTakeStock_Person]";
+            return "SELECT (case [CurrentTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态,count(*) FROM [dbo].[EquipmentInformation] a inner join[dbo].[TakeStock_Admin] b on a.StoragePlace = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") group by[CurrentTakeStock_Person]";
         }
 
         /// <summary>
@@ -265,19 +265,9 @@ namespace DXRFID.Class
         public string Select_TakeStockHistory_ByTakeStockTime(string TakeStockDatetime)
         {
             return @"SELECT b.[AssetNumber] 资产编码,b.[RFID],b.[EquipmentName] 名称,b.[Quantity] 数量,b.[Specification] 规格,b.[Brand] 品牌,b.[StoragePlace] 系统存放地点,b.[Keeper] 保管人,a.[Current_StoragePlace] 盘点存放地点,a.[TakeStock_Person] 盘点人
-                        FROM [RFID].[dbo].[TakeStockInformation] a inner join [RFID].[dbo].[EquipmentInformation] b on a.[EquirementRFID]=b.[RFID] and Convert(Nvarchar,a.[TakeStock_DateTime],120) like '%" + TakeStockDatetime + "%' order by b.RFID";
+                        FROM [dbo].[TakeStockInformation] a inner join [dbo].[EquipmentInformation] b on a.[EquirementRFID]=b.[RFID] and Convert(Nvarchar,a.[TakeStock_DateTime],120) like '%" + TakeStockDatetime + "%' order by b.RFID";
         }
-
-        /// <summary>
-        /// 查询待盘点信息
-        /// </summary>
-        /// <returns></returns>
-        public string Select_WaitTakeStockList()
-        {
-            return @"SELECT distinct [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[EquipmentStatus] 设备状态 FROM [RFID].[dbo].[EquipmentInformation] a inner join [RFID].[dbo].[TakeStock_Admin] b on b.[StoragePlace_Name]=a.[StoragePlace] and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") order by RFID";
-        }
-
-
+        
         /// <summary>
         /// 盘点管理信息插入
         /// </summary>
@@ -297,7 +287,8 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Update_EquipmentInformation(string StoragePlace, string Keeper,string RFID, string LoginName,string pic)
         {
-            return @"UPDATE [dbo].[EquipmentInformation] SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture]='" + pic + "' where [RFID]='" + RFID + "';" +
+            return @"UPDATE 
+SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture]='" + pic + "' where [RFID]='" + RFID + "';" +
                 "INSERT INTO [dbo].[UpdateEquipmentInformationHistory] ([RFID],[StoragePlace],[Keeper],[picture],[Update_DateTime],[Update_Person]) VALUES ('" + RFID + "','" + StoragePlace + "','" + Keeper + "','" + pic + "','" + System.DateTime.Now.ToString() + "','" + LoginName + "')";
         }
 
@@ -309,13 +300,13 @@ namespace DXRFID.Class
         public string Select_UpdateEquipmentInformation_ByRFID(string RFID)
         {
             return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,a.[Keeper] 原保管人,a.[StoragePlace] 原存放地点,b.[StoragePlace] 现存放地点,
-                        b.[Keeper] 现保管人,[Update_DateTime] 修改时间,[Update_Person] 修改人 FROM [RFID].[dbo].[EquipmentInformation] a inner join [RFID].[dbo].[UpdateEquipmentInformationHistory] b on a.RFID=b.RFID
+                        b.[Keeper] 现保管人,[Update_DateTime] 修改时间,[Update_Person] 修改人 FROM [dbo].[EquipmentInformation] a inner join [dbo].[UpdateEquipmentInformationHistory] b on a.RFID=b.RFID
                          where a.RFID='" + RFID + "' order by [Update_DateTime] desc";
         }
 
         public string Select_EquipmentPic_ByRFID(string RFID)
         {
-            return @"SELECT [AssetNumber],[EquipmentName],[picture] FROM [RFID].[dbo].[EquipmentInformation] WHERE RFID='" + RFID + "'";
+            return @"SELECT [AssetNumber],[EquipmentName],[picture] FROM [dbo].[EquipmentInformation] WHERE RFID='" + RFID + "'";
         }
     }
 }

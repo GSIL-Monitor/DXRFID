@@ -36,6 +36,7 @@
                     <div class="am-g">
                         <div class="am-u-sm-12">
                             <asp:Label ID="tishi" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
+                            <asp:Label ID="warning" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
                         </div>
                     </div>
                     <div class="am-u-sm-12">
@@ -89,12 +90,7 @@
                                     <CellStyle ForeColor="#999999">
                                     </CellStyle>
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="盘点人" Name="盘点人" VisibleIndex="9">
-                                    <HeaderStyle ForeColor="#999999" />
-                                    <CellStyle ForeColor="#999999">
-                                    </CellStyle>
-                                </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="设备当前存放位置" Name="设备当前存放位置" VisibleIndex="10">
+                                <dx:GridViewDataTextColumn FieldName="盘点存放位置" Name="存放位置" VisibleIndex="10">
                                     <HeaderStyle ForeColor="#999999" />
                                     <CellStyle ForeColor="#999999">
                                     </CellStyle>
