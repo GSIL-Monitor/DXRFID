@@ -18,6 +18,13 @@
     <link rel="stylesheet" href="../assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="../assets/css/app.css" />
     <script src="../assets/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf('Trident') > -1) {
+            alert('浏览器可能不能正常显示HTML5的效果，最好非IE内核浏览器');
+        }
+</script>
 </head>
 
 <body data-type="login">
