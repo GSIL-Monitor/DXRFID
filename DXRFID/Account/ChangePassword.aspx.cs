@@ -57,7 +57,7 @@ namespace DXRFID.Account
                 }
                 if (level_str < 3)
                 {
-                    error.InnerText = "密碼至少為大寫,小寫,特殊字符,數字里三個組合且長度至少為6位...";
+                    error.InnerText = "密码至少为大写,小写,特殊字符,数字里三个组合且长度至少为6位...";
                     return;
                 }
 

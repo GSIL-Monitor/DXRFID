@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-intro" class="am-u-sm-3 am-form-label">设备图片描述 / Description</label>
+                            <label for="user-intro" class="am-u-sm-3 am-form-label"><span style="color: red">*</span>设备图片描述 / Description</label>
                             <div class="am-u-sm-9" id="upload_file" runat="server">
                                 <dx:ASPxUploadControl ID="Upload" runat="server" Width="100%" Height="20px" ShowProgressPanel="True" ShowUploadButton="True" NullText="点击浏览图片文件..." OnFileUploadComplete="Upload_FileUploadComplete" Theme="iOS" UploadMode="Advanced">
                                     <ValidationSettings AllowedFileExtensions=".jpg, .jpeg, .jpe, .gif, .ico, .png,.jfif" MaxFileCount="1" MaxFileSize="20971520">

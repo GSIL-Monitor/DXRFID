@@ -42,6 +42,11 @@ namespace DXRFID.Account
                             Response.Redirect("../Default.aspx");
                         }
                     }
+                    else if (db_pwd == "" || db_pwd == null)
+                    {
+                        error.InnerText = "用户名不存在！";
+                        return;
+                    }
                     else
                     {
                         error.InnerText = "密码错误！";
@@ -52,7 +57,7 @@ namespace DXRFID.Account
                 }
                 else
                 {
-                    error.InnerText = "缺少登录信息！";
+                    error.InnerText = "缺少登录信息！请检查用户名、密码是否均已输入。";
                 }
             }
             else
