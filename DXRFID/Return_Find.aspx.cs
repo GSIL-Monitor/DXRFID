@@ -90,9 +90,7 @@ namespace DXRFID
             }
             else if (select_key.Value == "所有类别" && key_values.Value.ToString() == "")
             {
-                dbound.DataBounds(@"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Return_Person] 归还人,
-                                    b.[Return_Datetime] 归还时间, b.[Operator] 归还操作人 FROM
-                                    [RFID].[dbo].[EquipmentInformation] a inner join[RFID].[dbo].[ReturnInformation] b on a.[RFID] = b.[RFID] order by RFID");
+                dbound.DataBounds(db_handle.SelectALLReturnMsg());
             }
             else
             {

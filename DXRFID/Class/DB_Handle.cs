@@ -304,19 +304,57 @@ namespace DXRFID.Class
                          where a.RFID='" + RFID + "' order by [Update_DateTime] desc";
         }
 
+        /// <summary>
+        /// 按RFID查询设备图片
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
         public string Select_EquipmentPic_ByRFID(string RFID)
         {
             return @"SELECT [AssetNumber],[EquipmentName],[picture] FROM [dbo].[EquipmentInformation] WHERE RFID='" + RFID + "'";
         }
 
+        /// <summary>
+        /// 按工号查询头像信息
+        /// </summary>
+        /// <param name="opid"></param>
+        /// <returns></returns>
         public string SelectHeadPic(string opid)
         {
             return @"SELECT [picture] FROM [dbo].[userinfo] where opid='" + opid + "'";
         }
 
+        /// <summary>
+        /// 按工号修改头像信息
+        /// </summary>
+        /// <param name="opid"></param>
+        /// <param name="picid"></param>
+        /// <returns></returns>
         public string UpdateUserHeadPic(string opid,string picid)
         {
             return @"UPDATE [dbo].[userinfo] SET [picture] = '"+ picid + "' WHERE opid='"+ opid + "'";
+        }
+
+        /// <summary>
+        /// 查询所有借用信息
+        /// </summary>
+        /// <returns></returns>
+        public string SelectALLBorrowMsg()
+        {
+            return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Borrow_Person] 借出人,
+                                        b.[Borrow_Datetime] 借出时间,b.[Borrow_Cycle] 借出周期,b.[Borrow_Reason] 借出原因,b.[Operator] 借出操作人 FROM [dbo].[EquipmentInformation]
+                                        a inner join [dbo].[BorrowInformation] b on a.[RFID] = b.[RFID] order by RFID";
+        }
+
+        /// <summary>
+        /// 查询所有归还信息
+        /// </summary>
+        /// <returns></returns>
+        public string SelectALLReturnMsg()
+        {
+            return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Return_Person] 归还人,
+                                    b.[Return_Datetime] 归还时间, b.[Operator] 归还操作人 FROM
+                                     [dbo].[EquipmentInformation] a inner join [dbo].[ReturnInformation] b on a.[RFID] = b.[RFID] order by RFID";
         }
     }
 }
