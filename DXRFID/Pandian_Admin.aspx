@@ -20,7 +20,7 @@
             <asp:Label ID="NO_data" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
         </div>
 
-        <div class="tpl-portlet-components" style="height: 90%">
+        <div class="tpl-portlet-components" style="height: 100%">
             <div class="tpl-block" runat="server" id="show">
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-9">
