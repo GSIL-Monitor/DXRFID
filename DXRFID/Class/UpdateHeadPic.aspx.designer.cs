@@ -7,81 +7,63 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace DXRFID {
+namespace DXRFID.Class {
     
     
-    public partial class Header {
+    public partial class UpdateHeadPic {
         
         /// <summary>
-        /// head 控件。
+        /// form1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// welcome 控件。
+        /// show 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label welcome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl show;
         
         /// <summary>
-        /// headpic 控件。
+        /// upload_file 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage headpic;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl upload_file;
         
         /// <summary>
-        /// LoginName 控件。
+        /// Upload 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginName;
+        protected global::DevExpress.Web.ASPxUploadControl Upload;
         
         /// <summary>
-        /// UpdatePic 控件。
+        /// tijiao_tishi 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdatePic;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tijiao_tishi;
         
         /// <summary>
-        /// Changepwd 控件。
+        /// Image_show 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Changepwd;
-        
-        /// <summary>
-        /// ClearLogin 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ClearLogin;
-        
-        /// <summary>
-        /// Main 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Main;
+        protected global::System.Web.UI.WebControls.Image Image_show;
     }
 }

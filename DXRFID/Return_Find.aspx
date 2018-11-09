@@ -146,8 +146,8 @@
                             </Styles>
                         </dx:ASPxGridView>
                         <asp:SqlDataSource ID="SqlDataSource_show" runat="server" ConnectionString="<%$ ConnectionStrings:RFIDConnectionString %>" SelectCommand="SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,b.[Return_Person] 归还人,
-b.[Return_Datetime] 归还时间,b.[Operator] 归还操作人 FROM
-[RFID].[dbo].[EquipmentInformation] a inner join [RFID].[dbo].[ReturnInformation] b on a.[RFID] = b.[RFID] order by RFID" ProviderName="<%$ ConnectionStrings:RFIDConnectionString.ProviderName %>"></asp:SqlDataSource>
+b.[Return_Datetime] 归还时间,CONCAT(b.[Operator],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=b.[Operator]),')') 归还操作人 FROM
+ [dbo].[EquipmentInformation] a inner join [dbo].[ReturnInformation] b on a.[RFID] = b.[RFID] order by RFID" ProviderName="<%$ ConnectionStrings:RFIDConnectionString.ProviderName %>"></asp:SqlDataSource>
                     </div>
 
                 </div>

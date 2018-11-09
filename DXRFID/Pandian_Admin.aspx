@@ -76,7 +76,7 @@
                                     </Header>
                                 </Styles>
                             </dx:ASPxGridView>
-                            <asp:SqlDataSource ID="SqlDataSource_relieve" runat="server" ConnectionString="<%$ ConnectionStrings:RFIDConnectionString %>" SelectCommand="SELECT [StoragePlace_RFID] 区域RFID标记, [StoragePlace_Name] 区域名称, [TakeStock_Leader] 区域盘点负责人, [TakeStockStartTime] 预计盘点开始时间 FROM [TakeStock_Admin]" UpdateCommand="UPDATE [dbo].[TakeStock_Admin]
+                            <asp:SqlDataSource ID="SqlDataSource_relieve" runat="server" ConnectionString="<%$ ConnectionStrings:RFIDConnectionString %>" SelectCommand="SELECT [StoragePlace_RFID] 区域RFID标记, [StoragePlace_Name] 区域名称,CONCAT([TakeStock_Leader],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[TakeStock_Leader]),')') 区域盘点负责人, [TakeStockStartTime] 预计盘点开始时间 FROM [TakeStock_Admin]" UpdateCommand="UPDATE [dbo].[TakeStock_Admin]
                                                SET [StoragePlace_Name] = @区域名称
                                                   ,[TakeStock_Leader] = @区域盘点负责人
                                                   ,[TakeStockStartTime] = @预计盘点开始时间
@@ -99,7 +99,7 @@
                                     <asp:Parameter Name="区域RFID标记" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
-                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [RFID].[dbo].[EquipmentInformation] order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [dbo].[EquipmentInformation] order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
                         </div>
                     </div>
                 </div>

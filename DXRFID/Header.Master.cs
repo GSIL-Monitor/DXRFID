@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,17 @@ namespace DXRFID
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSessionLogin.CheckLogin(this.Page);
+
+            string opid = Session["SetUserID"].ToString();
+            DBHelper.DB dh = new DBHelper.DB();
+            Class.DB_Handle db_handle = new Class.DB_Handle();
+            dh._conn = ConfigurationManager.ConnectionStrings["RFIDConnectionString"].ConnectionString;
+            dh._timeout = 5;
+
+            string picid = dh.SQLServerGetDataTable(db_handle.SelectHeadPic(opid)).Select().Select(s => s["picture"].ToString()).FirstOrDefault();
+            headpic.Attributes.Add("src","assets/img/"+ picid + "");
+            
+            UpdatePic.Attributes.Add("onclick", "javascript: window.open('Class/UpdateHeadPic.aspx?opid=" + opid + "', '', 'width=' + (screen.width / 4) + ',height=' + (screen.availHeight / 2) + ',left=' + (screen.width / 4) + ',top=' + (screen.availHeight / 4) + ',scrollbars=yes,resizable=no,location=no,toolbar=no,menubar=no,resizable=no,status=no,directories:no')");
         }
 
         public void ClearClientPageCache()

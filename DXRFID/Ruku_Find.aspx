@@ -160,7 +160,7 @@
                                 </Header>
                             </Styles>
                         </dx:ASPxGridView>
-                        <asp:SqlDataSource ID="SqlDataSource_show" runat="server" ConnectionString="<%$ ConnectionStrings:RFIDConnectionString %>" SelectCommand="SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [RFID].[dbo].[EquipmentInformation] order by RFID"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource_show" runat="server" ConnectionString="<%$ ConnectionStrings:RFIDConnectionString %>" SelectCommand="SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,CONCAT([ruku_person],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[ruku_person]),')') 入库人,CheckTime as 上次校验时间,CONCAT([CheckPerson],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[CheckPerson]),')') as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] order by RFID"></asp:SqlDataSource>
                     </div>
 
                 </div>

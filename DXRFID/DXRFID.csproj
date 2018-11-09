@@ -24,6 +24,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,6 +88,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -146,6 +149,7 @@
     <Content Include="Borrow_Find.aspx" />
     <Content Include="Borrow_Handle.aspx" />
     <Content Include="Class\ConsoleBorrow_ShowPicForCustomer.aspx" />
+    <Content Include="Class\UpdateHeadPic.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="assets\css\admin.css" />
@@ -229,6 +233,13 @@
     <Compile Include="Class\DB_Handle.cs" />
     <Compile Include="Class\MD5_Encoding.cs" />
     <Compile Include="Class\SendMail.cs" />
+    <Compile Include="Class\UpdateHeadPic.aspx.cs">
+      <DependentUpon>UpdateHeadPic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class\UpdateHeadPic.aspx.designer.cs">
+      <DependentUpon>UpdateHeadPic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

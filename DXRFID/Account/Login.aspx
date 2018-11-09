@@ -20,11 +20,12 @@
     <script src="../assets/js/jquery.min.js"></script>
 
     <script type="text/javascript">
-    var userAgent = navigator.userAgent;
+        var userAgent = navigator.userAgent;
         if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf('Trident') > -1) {
-            alert('浏览器可能不能正常显示HTML5的效果，最好非IE内核浏览器');
+            alert('该浏览器可能不能正常操作现有的页面，最好使用非IE内核浏览器，对您造成的困扰，我们表示很抱歉！');
         }
-</script>
+
+    </script>
 </head>
 
 <body data-type="login">
@@ -46,10 +47,12 @@
                         <div class="am-form-group">
                             <input type="password" id="pwd" runat="server" placeholder="输入密码" />
                         </div>
-                        
+
                         <p>
                             <button type="submit" class="am-btn am-btn-default" runat="server">登录</button>
-                        </p><label style="color: darkorange; text-align: center" id="error" runat="server"></label>
+                        </p>
+                        <label style="color: darkorange; text-align: center" id="error" runat="server"></label>
+                        <br />
                     </fieldset>
                 </form>
             </div>

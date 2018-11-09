@@ -18,6 +18,7 @@ namespace DXRFID.Account
         {
             dh._conn = ConfigurationManager.ConnectionStrings["RFIDConnectionString"].ConnectionString;
             dh._timeout = 5;
+            
             if (IsPostBack)
             {
                 if (Request.Params["opid"].ToString() != "" && Request.Params["pwd"].ToString() != "")

@@ -42,11 +42,17 @@
                     <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                         <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
                             <span class="tpl-header-list-user-ico">
-                                <img src="assets/img/user01.jpg"></span>
+                                <img  runat="server" id="headpic"></span>
                         </a>
                         <ul class="am-dropdown-content">
                             <li>
-                                <asp:Label ID="LoginName" CssClass="am-icon-bell-o" runat="server" Text=""></asp:Label></li>
+                                <asp:Label ID="LoginName" CssClass="am-icon-bell-o" runat="server" Text=""></asp:Label>
+                            </li>
+                            <li>
+                                <span class="am-icon-amazon"></span>
+                                <asp:Button ID="UpdatePic" runat="server" Text="修改头像" CssClass="am-icon-bell-slash" BorderStyle="None" BackColor="White" />
+                                <span></span>
+                            </li>
                             <li>
                                 <span class="am-icon-cog"></span>
                                 <asp:Button ID="Changepwd" runat="server" Text="修改密码" CssClass="am-icon-bell-o" OnClick="Changepwd_Click" BorderStyle="None" BackColor="White" />

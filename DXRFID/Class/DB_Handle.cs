@@ -27,7 +27,7 @@ namespace DXRFID.Class
             //密码MD5加密
             md5_encoding.pwd = pwd;
             string pwd_encoding = md5_encoding.Encoding();
-            return "INSERT INTO [dbo].[userinfo] ([opid],[name],[pwd],[function],e_mail)  VALUES('" + opid + "','" + name + "','" + pwd_encoding + "','" + function + "','" + email + "')";
+            return "INSERT INTO [dbo].[userinfo] ([opid],[name],[pwd],[function],e_mail,picture)  VALUES('" + opid + "','" + name + "','" + pwd_encoding + "','" + function + "','" + email + "','user01.jpg')";
         }
 
         /// <summary>
@@ -188,12 +188,12 @@ namespace DXRFID.Class
         /// </summary>
         public string Select_InStoreMsg_ByCustromsKeyValue(string key,string value)
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] where "+ key + " LIKE '%"+ value + "%' order by RFID";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,CONCAT([ruku_person],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[ruku_person]),')') 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] where " + key + " LIKE '%"+ value + "%' order by RFID";
         }
 
         public string Select_AllInStoreMsg()
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,[ruku_person] 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] order by RFID";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[StoragePlace] 存放地点,[ruku_datetime] 入库时间,CONCAT([ruku_person],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[ruku_person]),')') 入库人,CheckTime as 上次校验时间,CheckPerson as 校验负责人,[EquipmentStatus] 设备状态 FROM [dbo].[EquipmentInformation] order by RFID";
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_TakeStockHistory_ByTakeStockTime(string TakeStockDatetime)
         {
-            return @"SELECT b.[AssetNumber] 资产编码,b.[RFID],b.[EquipmentName] 名称,b.[Quantity] 数量,b.[Specification] 规格,b.[Brand] 品牌,b.[StoragePlace] 系统存放地点,b.[Keeper] 保管人,a.[Current_StoragePlace] 盘点存放地点,a.[TakeStock_Person] 盘点人
+            return @"SELECT b.[AssetNumber] 资产编码,b.[RFID],b.[EquipmentName] 名称,b.[Quantity] 数量,b.[Specification] 规格,b.[Brand] 品牌,b.[StoragePlace] 系统存放地点,b.[Keeper] 保管人,a.[Current_StoragePlace] 盘点存放地点,CONCAT(a.[TakeStock_Person],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=a.[TakeStock_Person]),')')  盘点人
                         FROM [dbo].[TakeStockInformation] a inner join [dbo].[EquipmentInformation] b on a.[EquirementRFID]=b.[RFID] and Convert(Nvarchar,a.[TakeStock_DateTime],120) like '%" + TakeStockDatetime + "%' order by b.RFID";
         }
         
@@ -288,7 +288,7 @@ namespace DXRFID.Class
         public string Update_EquipmentInformation(string StoragePlace, string Keeper,string RFID, string LoginName,string pic)
         {
             return @"UPDATE 
-SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture]='" + pic + "' where [RFID]='" + RFID + "';" +
+                SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture]='" + pic + "' where [RFID]='" + RFID + "';" +
                 "INSERT INTO [dbo].[UpdateEquipmentInformationHistory] ([RFID],[StoragePlace],[Keeper],[picture],[Update_DateTime],[Update_Person]) VALUES ('" + RFID + "','" + StoragePlace + "','" + Keeper + "','" + pic + "','" + System.DateTime.Now.ToString() + "','" + LoginName + "')";
         }
 
@@ -300,13 +300,23 @@ SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture
         public string Select_UpdateEquipmentInformation_ByRFID(string RFID)
         {
             return @"SELECT [AssetNumber] 资产编码,a.[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,a.[Keeper] 原保管人,a.[StoragePlace] 原存放地点,b.[StoragePlace] 现存放地点,
-                        b.[Keeper] 现保管人,[Update_DateTime] 修改时间,[Update_Person] 修改人 FROM [dbo].[EquipmentInformation] a inner join [dbo].[UpdateEquipmentInformationHistory] b on a.RFID=b.RFID
+                        b.[Keeper] 现保管人,[Update_DateTime] 修改时间,CONCAT([Update_Person],'(',(SELECT [name] FROM [dbo].[userinfo] WHERE opid=[Update_Person]),')') 修改人 FROM [dbo].[EquipmentInformation] a inner join [dbo].[UpdateEquipmentInformationHistory] b on a.RFID=b.RFID
                          where a.RFID='" + RFID + "' order by [Update_DateTime] desc";
         }
 
         public string Select_EquipmentPic_ByRFID(string RFID)
         {
             return @"SELECT [AssetNumber],[EquipmentName],[picture] FROM [dbo].[EquipmentInformation] WHERE RFID='" + RFID + "'";
+        }
+
+        public string SelectHeadPic(string opid)
+        {
+            return @"SELECT [picture] FROM [dbo].[userinfo] where opid='" + opid + "'";
+        }
+
+        public string UpdateUserHeadPic(string opid,string picid)
+        {
+            return @"UPDATE [dbo].[userinfo] SET [picture] = '"+ picid + "' WHERE opid='"+ opid + "'";
         }
     }
 }
