@@ -51,9 +51,12 @@ namespace DXRFID
 
         protected void ASPxGridView_show_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
         {
-            if (e.GetValue("系统存放地点") != e.GetValue("盘点存放地点"))
+            if(ASPxGridView_show.VisibleRowCount > 0)
             {
-                e.Row.BackColor = System.Drawing.Color.LemonChiffon;
+                if (e.GetValue("系统存放地点").ToString() != e.GetValue("盘点存放地点").ToString())
+                {
+                    e.Row.BackColor = System.Drawing.Color.LemonChiffon;
+                }
             }
         }
     }

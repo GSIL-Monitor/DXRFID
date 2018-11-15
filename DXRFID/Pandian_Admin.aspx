@@ -4,7 +4,7 @@
     <script src="assets/My97DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position:absolute;height:100%;width:90%">
+    <div class="tpl-portlet-components" style="position:absolute;height:100%;width:85%">
         <div class="tpl-content-page-title">
             OFT RFID 管理系统--盘点信息维护
         </div>

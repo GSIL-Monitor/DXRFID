@@ -17,7 +17,7 @@
         </div>
         <br />
 
-        <div class="tpl-portlet-components" style="width:100%">
+        <div class="tpl-portlet-components" style="width:85%">
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-6">
