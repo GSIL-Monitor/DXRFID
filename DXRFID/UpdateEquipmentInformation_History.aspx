@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position:absolute;width:100%;">
+    <div class="tpl-portlet-components" style="position:absolute;width:100%;height:auto">
         <div class="tpl-content-page-title">
             OFT RFID 管理系统--设备信息维护历史查询
         </div>
@@ -15,7 +15,7 @@
         </div>
         <br />
 
-        <div class="tpl-portlet-components">
+        <div class="tpl-portlet-components" style="height:100%;width:100%">
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-6">

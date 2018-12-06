@@ -20,8 +20,8 @@
             <asp:Label ID="NO_data" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
         </div>
 
-        <div class="tpl-portlet-components" style="height: 100%">
-            <div class="tpl-block" runat="server" id="show">
+        <div class="tpl-portlet-components" style="height: 100%" id="show" runat="server">
+            <div class="tpl-block"  >
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-9">
                         <button type="button" class="am-btn am-btn-primary" runat="server" onserverclick="Submit_ServerClick">清除所有绑定数据</button>
@@ -81,10 +81,10 @@
                                                   ,[TakeStock_Leader] = @区域盘点负责人
                                                   ,[TakeStockStartTime] = @预计盘点开始时间
                                              WHERE [StoragePlace_RFID]=@区域RFID标记;UPDATE [dbo].[EquipmentInformation]
-   SET  [CurrentTakeStock_Person] = '无'
+   SET  [CurrentTakeStock_Person] = '无',[CurrentTakeStock_DateTime]=NULL
  WHERE [StoragePlace] = @区域名称"
-                                InsertCommand="INSERT INTO [dbo].[TakeStock_Admin] ([StoragePlace_RFID],[StoragePlace_Name],[TakeStock_Leader],[TakeStockStartTime]) VALUES(@区域RFID标记,@区域名称,@区域盘点负责人,@预计盘点开始时间);UPDATE [dbo].[EquipmentInformation]
-   SET  [CurrentTakeStock_Person] = '无'
+                                InsertCommand="if not exists (SELECT * FROM [dbo].[TakeStockInformation]  where [Current_StoragePlace] = @区域名称 and Convert(nvarchar(10),TakeStock_DateTime,120)=CONVERT(nvarchar(10),@预计盘点开始时间,120)) INSERT INTO [dbo].[TakeStock_Admin] ([StoragePlace_RFID],[StoragePlace_Name],[TakeStock_Leader],[TakeStockStartTime]) VALUES(@区域RFID标记,@区域名称,@区域盘点负责人,@预计盘点开始时间);UPDATE [dbo].[EquipmentInformation]
+   SET  [CurrentTakeStock_Person] = '无',[CurrentTakeStock_DateTime]=NULL
  WHERE [StoragePlace] = @区域名称">
                                 <InsertParameters>
                                     <asp:Parameter Name="区域RFID标记" />
@@ -99,7 +99,7 @@
                                     <asp:Parameter Name="区域RFID标记" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
-                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [dbo].[EquipmentInformation] order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [dbo].[EquipmentInformation] where [CurrentTakeStock_DateTime] IS NULL order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
                         </div>
                     </div>
                 </div>

@@ -287,7 +287,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Update_EquipmentInformation(string StoragePlace, string Keeper,string RFID, string LoginName,string pic)
         {
-            return @"UPDATE 
+            return @"UPDATE [dbo].[EquipmentInformation]
                 SET [StoragePlace] = '" + StoragePlace + "',[Keeper] = '" + Keeper + "',[picture]='" + pic + "' where [RFID]='" + RFID + "';" +
                 "INSERT INTO [dbo].[UpdateEquipmentInformationHistory] ([RFID],[StoragePlace],[Keeper],[picture],[Update_DateTime],[Update_Person]) VALUES ('" + RFID + "','" + StoragePlace + "','" + Keeper + "','" + pic + "','" + System.DateTime.Now.ToString() + "','" + LoginName + "')";
         }

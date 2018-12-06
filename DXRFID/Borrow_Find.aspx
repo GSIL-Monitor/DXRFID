@@ -32,7 +32,7 @@
             </ol>
         </div>
 
-        <div class="tpl-portlet-components" style="height:100%">
+        <div class="tpl-portlet-components" style="height:100%;width:100%">
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-md-6">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="am-g">
                     <div class="am-u-sm-12">
-                        <dx:ASPxGridView ID="ASPxGridView_show" runat="server" AutoGenerateColumns="False" Font-Names="微软雅黑" Theme="iOS" DataSourceID="SqlDataSource_show" Width="100%">
+                        <dx:ASPxGridView ID="ASPxGridView_show" runat="server" AutoGenerateColumns="False" Font-Names="微软雅黑" Theme="iOS" DataSourceID="SqlDataSource_show" Width="100%" OnCustomColumnDisplayText="ASPxGridView_show_CustomColumnDisplayText">
                             <SettingsAdaptivity>
                                 <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
                             </SettingsAdaptivity>

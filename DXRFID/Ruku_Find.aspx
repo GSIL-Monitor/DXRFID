@@ -37,7 +37,7 @@
             </ol>
         </div>
 
-        <div class="tpl-portlet-components" style="height:100%">
+        <div class="tpl-portlet-components" style="height:100%;width:100%">
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-md-6">

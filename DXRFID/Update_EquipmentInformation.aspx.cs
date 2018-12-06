@@ -62,31 +62,36 @@ namespace DXRFID
             string res;
             try
             {
-                if (RFID.Value != "" && Session["old_Keeper"].ToString() != Keeper.Value && Session["old_Storage_Place"].ToString() != Storage_Place.Value)
+                if (RFID.Value != "" && (Session["old_Keeper"].ToString() != Keeper.Value || Session["old_Storage_Place"].ToString() != Storage_Place.Value || Session["FileName"] != null && Session["FileName"].ToString() != ""))
                 {
                     if (Session["FileName"] != null && Session["FileName"].ToString() != "")
                     {
                         res = dh.SQLServerDBHandle(db_handle.Update_EquipmentInformation(Storage_Place.Value, Keeper.Value, RFID.Value, Session["SetUserID"].ToString(), Session["FileName"].ToString()));
+
+                        if (res == "OK")
+                        {
+                            if (Description.Value != "")
+                            {
+                                string filePath = Path.Combine(Server.MapPath(UploadDirectory), Description.Value.Split(':')[1]);
+                                File.Delete(filePath);
+                            }
+                        }
+                        else
+                        {
+                            tijiao_tishi.InnerText = "修改失败,ErrorMassage:" + res;
+                        }
                     }
                     else
                     {
                         res = dh.SQLServerDBHandle(db_handle.Update_EquipmentInformation(Storage_Place.Value, Keeper.Value, RFID.Value, Session["SetUserID"].ToString(), Description.Value.Split(':')[1]));
                     }
+
                     if (res == "OK")
                     {
-                        if (Description.Value != "")
-                        {
-                            string filePath = Path.Combine(Server.MapPath(UploadDirectory), Description.Value.Split(':')[1]);
-                            File.Delete(filePath);
-                        }
                         tijiao_tishi.InnerText = "修改成功";
                         tijiao_tishi.Style.Add("color", "cornflowerblue");
                         Clear();
                         RFID.Focus();
-                    }
-                    else
-                    {
-                        tijiao_tishi.InnerText = "修改失败,ErrorMassage:" + res;
                     }
                 }
                 else if (Session["old_Keeper"].ToString() == Keeper.Value && Session["old_Keeper"] != null && Session["old_Storage_Place"].ToString() == Storage_Place.Value && Session["old_Storage_Place"] != null)

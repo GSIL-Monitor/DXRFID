@@ -116,5 +116,19 @@ namespace DXRFID
             key_values_datetime.Style.Add("color", "Gray");
             key_values.Style.Add("color", "Gray");
         }
+
+        protected void ASPxGridView_show_CustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e)
+        {
+            if (ASPxGridView_show.VisibleRowCount > 0)
+            {
+                if (e.Column.FieldName == "借出原因")
+                {
+                    if (ASPxGridView_show.GetRowValues(e.VisibleIndex, "借出原因").ToString().Length > 10)
+                    {
+                        e.DisplayText = ASPxGridView_show.GetRowValues(e.VisibleIndex, "借出原因").ToString().Substring(0, 10) + "...";
+                    }
+                }
+            }
+        }
     }
 }
