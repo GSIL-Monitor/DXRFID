@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position: absolute; width: 100%; height: 100%">
+    <div class="tpl-portlet-components" style="position:absolute;width:85%;height:auto">
         <div class="tpl-content-page-title">
             OFT RFID 管理系统--盘点状态查询
         </div>
@@ -18,7 +18,7 @@
         <div></div>
 
         <div class="tpl-portlet-components" runat="server" id="no_show" visible="false">
-            <asp:Label ID="NO_data" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
+            <asp:Label ID="NO_data" runat="server" Width="1500px" Style="text-align: center; color: #FF0000"></asp:Label>
         </div>
 
         <div class="tpl-portlet-components" style="width: 100%" runat="server" id="show">
@@ -36,7 +36,7 @@
                     <div class="am-g">
                         <div class="am-u-sm-12">
                             <asp:Label ID="tishi" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
-                            <asp:Label ID="warning" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
+                            <%--<asp:Label ID="warning" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>--%>
                         </div>
                     </div>
                     <div class="am-u-sm-12">
@@ -85,7 +85,7 @@
                                     <CellStyle ForeColor="#999999">
                                     </CellStyle>
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="盘点时间" Name="盘点时间" VisibleIndex="8">
+                                <%--<dx:GridViewDataTextColumn FieldName="盘点时间" Name="盘点时间" VisibleIndex="8">
                                     <HeaderStyle ForeColor="#999999" />
                                     <CellStyle ForeColor="#999999">
                                     </CellStyle>
@@ -94,7 +94,7 @@
                                     <HeaderStyle ForeColor="#999999" />
                                     <CellStyle ForeColor="#999999">
                                     </CellStyle>
-                                </dx:GridViewDataTextColumn>
+                                </dx:GridViewDataTextColumn>--%>
                                 <dx:GridViewDataTextColumn FieldName="盘点状态" Name="盘点状态" VisibleIndex="11">
                                     <HeaderStyle ForeColor="#999999" />
                                     <CellStyle ForeColor="#999999">

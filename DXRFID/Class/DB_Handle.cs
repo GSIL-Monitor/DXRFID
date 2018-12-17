@@ -244,8 +244,8 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_AllTakeStockStatus()
         {
-            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,[CurrentTakeStock_DateTime] 盘点时间,[CurrentTakeStock_StoragePlace] 盘点存放位置,(case [CurrentTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态 FROM [dbo].[EquipmentInformation] a inner join [dbo].[TakeStock_Admin] b
-                    on a.[StoragePlace] = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") order by RFID";
+            return @"SELECT [AssetNumber] 资产编码,[RFID],[EquipmentName] 名称,[Specification] 规格,[Brand] 品牌,[Quantity] 数量,[Keeper] 保管人,(case [CurrentTakeStockflag] when 0 then '未盘点' else '已盘点' end) 盘点状态 FROM [dbo].[EquipmentInformation] a inner join [dbo].[TakeStock_Admin] b
+                    on a.[StoragePlace] = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") order by RFID"; //[CurrentTakeStock_DateTime] 盘点时间,[CurrentTakeStock_StoragePlace] 盘点存放位置,
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace DXRFID.Class
         /// <returns></returns>
         public string Select_TakeStockCount()
         {
-            return "SELECT (case [CurrentTakeStock_Person] when '无' then '未盘点' else '已盘点' end) 盘点状态,count(*) FROM [dbo].[EquipmentInformation] a inner join[dbo].[TakeStock_Admin] b on a.StoragePlace = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") group by[CurrentTakeStock_Person]";
+            return "SELECT (case [CurrentTakeStockflag] when 0 then '未盘点' else '已盘点' end) 盘点状态,count(*) FROM [dbo].[EquipmentInformation] a inner join[dbo].[TakeStock_Admin] b on a.StoragePlace = b.StoragePlace_Name and b.[TakeStockStartTime] <= (" + Check_TakeStockTime() + ") group by [CurrentTakeStockflag]";
         }
 
         /// <summary>

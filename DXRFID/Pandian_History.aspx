@@ -4,7 +4,7 @@
     <script src="assets/My97DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position: absolute; width: 100%; height: 100%">
+    <div class="tpl-portlet-components" style="position: absolute; width: auto; height:auto">
         <div class="tpl-content-page-title">
             OFT RFID 管理系统--盘点历史资料查询
         </div>
@@ -19,7 +19,7 @@
 
         <div class="tpl-portlet-components" style="height:100%;width:100%">
             <div class="tpl-block">
-                <div class="am-g">
+                <div class="am-g" style="width:1400px">
                     <div class="am-u-sm-12 am-u-md-6">
                         <div class="am-btn-group am-btn-group-xs">
                             <button type="button" id="download" class="am-btn am-btn-default am-btn-warning" runat="server" onserverclick="Download_ServerClick"><span class="am-icon-archive"></span>下载</button>

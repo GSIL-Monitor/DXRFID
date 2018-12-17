@@ -10,7 +10,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position: absolute;height:100%;width:85%">
+    <div class="tpl-portlet-components" style="position: absolute;height:auto;width:85%">
 
         <%--表单头--%>
         <div class="tpl-content-page-title">

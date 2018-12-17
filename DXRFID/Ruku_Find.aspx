@@ -23,7 +23,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position: absolute;height:100%;width:100%">
+    <div class="tpl-portlet-components" style="position:absolute;width:auto;height:auto">
 
         <%--表单头--%>
         <div class="tpl-content-page-title">
@@ -37,7 +37,7 @@
             </ol>
         </div>
 
-        <div class="tpl-portlet-components" style="height:100%;width:100%">
+        <div class="tpl-portlet-components">
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-md-6">
@@ -79,7 +79,7 @@
                 <br />
                 <div class="am-g">
                     <div class="am-u-sm-12" id="show_table">
-                        <dx:ASPxGridView ID="ASPxGridView_show" runat="server" AutoGenerateColumns="False" Font-Names="微软雅黑" Theme="iOS" DataSourceID="SqlDataSource_show" Width="100%">
+                        <dx:ASPxGridView ID="ASPxGridView_show" runat="server" AutoGenerateColumns="False" Font-Names="微软雅黑" Theme="iOS" DataSourceID="SqlDataSource_show" Width="1500px">
                             <SettingsAdaptivity>
                                 <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
                             </SettingsAdaptivity>

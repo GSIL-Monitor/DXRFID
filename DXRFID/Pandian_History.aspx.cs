@@ -45,7 +45,7 @@ namespace DXRFID
                 ASPxGridView_show.Visible = true;
                 download.Attributes.Remove("disabled");
                 dbound.DataBounds(db_handle.Select_TakeStockHistory_ByTakeStockTime(key_values_datetime.Value));
-                tishi.Text = "共有 " + ASPxGridView_show.VisibleRowCount + " 台设备记录,红色底纹标记为系统存放地点与盘点存放地点不一致记录";
+                tishi.Text = "共有 " + ASPxGridView_show.VisibleRowCount + " 台设备记录,底纹标记为系统存放地点与盘点存放地点不一致记录";
             }
         }
 

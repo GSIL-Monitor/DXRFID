@@ -19,7 +19,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position: absolute;height:100%;width:100%">
+    <div class="tpl-portlet-components" style="position:absolute;width:auto;height:auto">
 
         <%--表单头--%>
         <div class="tpl-content-page-title">
@@ -34,7 +34,7 @@
 
         <div class="tpl-portlet-components" style="height:100%;width:100%">
             <div class="tpl-block">
-                <div class="am-g">
+                <div class="am-g" style="width:1400px">
                     <div class="am-u-md-6">
                         <div class="am-btn-group am-btn-group-xs">
                             <button type="button" class="am-btn am-btn-default am-btn-warning" runat="server" onserverclick="Download_ServerClick"><span class="am-icon-archive"></span>下载</button>

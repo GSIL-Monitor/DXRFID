@@ -34,8 +34,6 @@ namespace DXRFID
                 {
                     tishi.Text += dt.Rows[i].ItemArray[0].ToString() + " : " + dt.Rows[i].ItemArray[1].ToString() + "台   ";
                 }
-                tishi.Text = tishi.Text.Trim();
-                warning.Text = "未盘点的设备,盘点时间与盘点位置均为上次盘点的记录";
             }
             else
             {

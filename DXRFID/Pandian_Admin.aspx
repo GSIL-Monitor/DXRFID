@@ -4,7 +4,7 @@
     <script src="assets/My97DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
-    <div class="tpl-portlet-components" style="position:absolute;height:100%;width:85%">
+    <div class="tpl-portlet-components" style="position:absolute; width:auto;height:auto">
         <div class="tpl-content-page-title">
             OFT RFID 管理系统--盘点信息维护
         </div>
@@ -17,12 +17,12 @@
         </div>
 
         <div class="tpl-portlet-components" runat="server" id="no_show" visible="false">
-            <asp:Label ID="NO_data" runat="server" Width="100%" Style="text-align: center; color: #FF0000"></asp:Label>
+            <asp:Label ID="NO_data" runat="server" Style="text-align: center; color: #FF0000"></asp:Label>
         </div>
 
-        <div class="tpl-portlet-components" style="height: 100%" id="show" runat="server">
+        <div class="tpl-portlet-components"  id="show" runat="server">
             <div class="tpl-block"  >
-                <div class="am-g">
+                <div class="am-g" style="height:1000px;width:1400px">
                     <div class="am-u-sm-12 am-u-md-9">
                         <button type="button" class="am-btn am-btn-primary" runat="server" onserverclick="Submit_ServerClick">清除所有绑定数据</button>
                         <label style="color: red;" id="tijiao_tishi" runat="server"></label>
@@ -54,11 +54,11 @@
                                         <CellStyle ForeColor="#999999">
                                         </CellStyle>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="区域盘点负责人" VisibleIndex="3">
+                                   <%-- <dx:GridViewDataTextColumn FieldName="区域盘点负责人" VisibleIndex="3">
                                         <HeaderStyle ForeColor="#999999" />
                                         <CellStyle ForeColor="#999999">
                                         </CellStyle>
-                                    </dx:GridViewDataTextColumn>
+                                    </dx:GridViewDataTextColumn>--%>
                                     <dx:GridViewDataDateColumn FieldName="预计盘点开始时间" VisibleIndex="4" PropertiesDateEdit-Width="400px" PropertiesDateEdit-CalendarProperties-DayStyle-ForeColor="Gray">
                                         <PropertiesDateEdit Width="400px">
                                             <CalendarProperties>
@@ -81,11 +81,9 @@
                                                   ,[TakeStock_Leader] = @区域盘点负责人
                                                   ,[TakeStockStartTime] = @预计盘点开始时间
                                              WHERE [StoragePlace_RFID]=@区域RFID标记;UPDATE [dbo].[EquipmentInformation]
-   SET  [CurrentTakeStock_Person] = '无',[CurrentTakeStock_DateTime]=NULL
- WHERE [StoragePlace] = @区域名称"
+   SET  [CurrentTakeStockflag] = 0 WHERE [StoragePlace] = @区域名称"
                                 InsertCommand="if not exists (SELECT * FROM [dbo].[TakeStockInformation]  where [Current_StoragePlace] = @区域名称 and Convert(nvarchar(10),TakeStock_DateTime,120)=CONVERT(nvarchar(10),@预计盘点开始时间,120)) INSERT INTO [dbo].[TakeStock_Admin] ([StoragePlace_RFID],[StoragePlace_Name],[TakeStock_Leader],[TakeStockStartTime]) VALUES(@区域RFID标记,@区域名称,@区域盘点负责人,@预计盘点开始时间);UPDATE [dbo].[EquipmentInformation]
-   SET  [CurrentTakeStock_Person] = '无',[CurrentTakeStock_DateTime]=NULL
- WHERE [StoragePlace] = @区域名称">
+   SET  [CurrentTakeStockflag] = 0 WHERE [StoragePlace] = @区域名称">
                                 <InsertParameters>
                                     <asp:Parameter Name="区域RFID标记" />
                                     <asp:Parameter Name="区域名称" />
@@ -99,7 +97,7 @@
                                     <asp:Parameter Name="区域RFID标记" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
-                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [dbo].[EquipmentInformation] where [CurrentTakeStock_DateTime] IS NULL order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource_StoragePlace" runat="server" SelectCommand="SELECT distinct [StoragePlace] FROM [dbo].[EquipmentInformation] where [CurrentTakeStockflag] = 0 order by [StoragePlace]" ConnectionString='<%$ ConnectionStrings:RFIDConnectionString %>'></asp:SqlDataSource>
                         </div>
                     </div>
                 </div>
